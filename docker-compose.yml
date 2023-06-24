@@ -1,0 +1,17 @@
+version: "3.3"
+
+services:
+  redirector:
+    container_name: preservetube-redirector
+    image: preservetube/redirector
+    networks:
+      - public
+    restart: on-failure
+    volumes:
+      - ./.env:/usr/src/preservetube/redirector/.env
+      - ./keys.json:/usr/src/preservetube/redirector/keys.json
+
+networks:
+  public:
+    external:
+      name: public
