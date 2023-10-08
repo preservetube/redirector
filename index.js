@@ -9,7 +9,7 @@ app.get('*', (req, res) => {
 
     if (!subdomain) return res.redirect(process.env.REDIRECT)
     if (req.path == '/') return res.redirect(process.env.REDIRECT)
-    if (!keys[subdomain]) return res.redirect(`${process.env.REDIRECT}${req.path}`)
+    if (!keys[subdomain]) return res.redirect(`${process.env.REDIRECT}${req.originalUrl}`)
 
     if (subdomain == 'media') return res.redirect(`https://link.storjshare.io/raw/${keys[subdomain]}/media${req.path}`)
     else return res.redirect(`https://link.storjshare.io/raw/${keys[subdomain]}/video${req.path}`)
